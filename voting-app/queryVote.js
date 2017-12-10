@@ -51,7 +51,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
         throw new Error('Failed to get user1.... run registerUser.js');
     }
 
-    // queryTuna - requires 1 argument, ex: args: ['4'],
+    // queryVote - requires 1 argument, ex: args: ['4'],
     const request = {
         chaincodeId: 'voting-app',
         txId: tx_id,
