@@ -73,5 +73,5 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
         console.log("No payloads were returned from query");
     }
 }).catch((err) => {
-    console.error('Failed to query successfully :: ' + err);
+    //console.error('Failed to query successfully :: ' + err);
 });

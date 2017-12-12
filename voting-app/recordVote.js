@@ -16,7 +16,7 @@ var options = {
     wallet_path: path.join(__dirname, './creds'),
     user_id: 'PeerAdmin',
     channel_id: 'mychannel',
-    chaincode_id: 'fabcar',
+    chaincode_id: 'voting-chaincode',
     peer_url: 'grpc://localhost:7051',
     event_url: 'grpc://localhost:7053',
     orderer_url: 'grpc://localhost:7050'
@@ -48,15 +48,13 @@ Promise.resolve().then(() => {
 }).then(() => {
     tx_id = client.newTransactionID();
     console.log("Assigning transaction_id: ", tx_id._transaction_id);
-    // createCar - requires 5 args, ex: args: ['CAR11', 'Honda', 'Accord', 'Black', 'Tom'],
-    // changeCarOwner - requires 2 args , ex: args: ['CAR10', 'Barry'],
     // send proposal to endorser
     var request = {
         targets: targets,
         //chaincodeId: options.chaincode_id,
-        chaincodeId: 'fabcar',
-        fcn: 'changeCarOwner',
-        args: ['CAR10', 'Dave'],
+        chaincodeId: 'voting-chaincode',
+        fcn: 'recordVote',
+        args: ['6','Jack','IEEE','141041717','PCCOE'],
         //chainId: options.channel_id,
         //chainId: 'fabcar',
         chainId:  'mychannel',

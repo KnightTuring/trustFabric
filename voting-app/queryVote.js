@@ -15,8 +15,6 @@ var os = require('os');
 
 var fabric_client = new Fabric_Client();
 
-var key = req.params.id
-
 // setup the fabric network
 var channel = fabric_client.newChannel('mychannel');
 var peer = fabric_client.newPeer('grpc://localhost:7051');
@@ -53,10 +51,10 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 
     // queryVote - requires 1 argument, ex: args: ['4'],
     const request = {
-        chaincodeId: 'voting-app',
+        chaincodeId: 'voting-chaincode',
         txId: tx_id,
         fcn: 'queryVote',
-        args: [key]
+        args: ['3']
     };
 
     // send the query proposal to the peer
@@ -75,5 +73,5 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
         console.log("No payloads were returned from query");
     }
 }).catch((err) => {
-    console.error('Failed to query successfully :: ' + err);
+    //console.error('Failed to query successfully :: ' + err);
 });
